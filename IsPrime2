@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+public class Main{
+    public static void main(String[] args)    {
+        boolean p=true;
+        Scanner sc=new Scanner(System.in);
+        int times,num,i;
+        times=sc.nextInt();
+        int[] arr=new int [times];
+        for(i=0;i<arr.length;i++){
+            arr[i]=sc.nextInt();
+        }
+        for(i=0;i<arr.length;i++){
+            int tmp=arr[i];
+            if(tmp==1)
+                System.out.println("true");
+            else{
+                for(int j=2;j<=tmp;j++){   
+                    if(j==tmp){
+                        System.out.println("true");
+                        break;
+                    }
+                    if(tmp%j==0){
+                       System.out.println("false");
+                       break;
+                    }
+                }
+            }
+            
+        }
+    }
+}
