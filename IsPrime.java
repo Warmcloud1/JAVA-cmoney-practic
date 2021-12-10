@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+
 class Prime{
   void isprime(int n){
     boolean prime=true;
@@ -15,7 +16,7 @@ class Prime{
 }
       
     
-public class IsPrime {
+public class Main {
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
     Prime p=new Prime();
@@ -25,6 +26,10 @@ public class IsPrime {
     while(times-->0)
       arr_num[i++]=sc.nextInt();
     for(Integer j:arr_num)
-      p.isprime(j);
+    {
+      if(j==1)
+        System.out.println("false");
+      else p.isprime(j);
+    }
   }
 }
