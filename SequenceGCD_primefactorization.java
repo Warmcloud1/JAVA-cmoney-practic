@@ -54,8 +54,9 @@ public class FindSequenceGCD {
             ans_gcd=G.gcd(ans_gcd,num);            
         } 
         String output=ans_gcd+"=1^1";
+        int tmp=ans_gcd;
         while(ans_gcd>1){
-            for(int i=2;i<=ans_gcd/2;i++){
+            for(int i=2;i<=tmp/2;i++){
                 int times=Pf.prime_times(ans_gcd,i);
                 if(Pf.isprime(i)&&times>0){
                     output+="*"+i+"^"+times;
