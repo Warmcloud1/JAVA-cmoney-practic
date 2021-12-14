@@ -58,7 +58,7 @@ public class FindSequenceGCD {
             for(int i=2;i<=ans_gcd/2;i++){
                 int times=Pf.prime_times(ans_gcd,i);
                 if(Pf.isprime(i)&&times>0){
-                    output+="+"+i+"^"+times;
+                    output+="*"+i+"^"+times;
                     ans_gcd/=Pf.prime_pow(i,times);
                 }
             }
