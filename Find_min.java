@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class JavaPractice3{
+public class F{
     public static void main(String[] argv){        
         Scanner sc=new Scanner(System.in);
         int i;
