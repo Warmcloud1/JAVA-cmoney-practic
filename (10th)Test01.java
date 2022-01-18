@@ -1,26 +1,3 @@
-/*
-OS:第一次在有時間壓力下作答 還真的有點寫不出來QQ
-除了最後一題真的看不懂 ， 這題應該也要對的 可惜。
-要多多琢磨 字串輸入&比對 
-而且這次作答 有關於字串的兩題
-我其實都沒有完全的利用到題目給的數字，感覺不是出題者要的，再慢慢想。
-
-3
-4 4 5
-well done world
-7
-wdrolne
-
-輸出 : 9
-
-3
-3 4 7
-bee tall brother
-7
-betlore
-
-輸出: 3
-*/
 import java.util.Scanner;
 
 class Check{
@@ -28,31 +5,31 @@ class Check{
     public Check(String dict){
         this.dict = dict;
     }
-    public boolean calc(String str){
-        boolean ans = true,
-                find = false;
-        boolean[] firstFind = new boolean[dict.length()];
-        for(int i = 0; i < firstFind.length; i ++){
-            firstFind[i] = true;
-        }
+    public boolean calc(String word){
+        boolean ans = true;
+        boolean[] find = new boolean[dict.length()];
         
-        for(int i = 0; i < str.length(); i ++){
-           char c = str.charAt(i);
-           for(int j = 0; j < dict.length(); j ++){
-               if(dict.charAt(j) == c && firstFind[j]){
-                   ans = true;
-                   firstFind[j] = false;
-                   find = true;
-                   break;
-               }
-               else if(dict.charAt(j) == c && !firstFind[j]){
-                   ans = false;
-               }
-           }
-        }
-        
-        if(find == false){
-            ans = false;
+        for(int i = 0; i < word.length(); i++){
+            char tmpChar = word.charAt(i);
+            int startIndex = dict.indexOf(tmpChar);
+            //根本沒這個字的狀況
+            if(startIndex == -1){
+                return false;
+            }
+            //有這個字，index指向該字第一次出現在dict中的位置，並往後找 處理同樣的字出現1次以上的狀況
+            for(; startIndex < dict.length(); startIndex++){
+                //符合 1. 字元相同  2. 在目前字典位置的這個字元 沒有被找過
+                if(tmpChar == dict.charAt(startIndex) && !find[startIndex]){
+                    //一旦找到符合 字典位置標誌為找過，跳出
+                    find[startIndex] = true;
+                    break;
+                }
+                //已經到dict尾，單字目前的字元 仍然沒有在字典中找到符合if情況
+                else if(startIndex == dict.length() - 1){
+                    ans = false;
+                    break;
+                }
+            }
         }
         return ans;
     }
